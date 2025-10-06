@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from celery.result import AsyncResult
-from app.tasks import add_five
+from app.tasks import calculate_pi
 from app.celery_worker import celery_app
 
 app = FastAPI()
@@ -10,12 +10,12 @@ app = FastAPI()
 def root():
     return {"message": "test"}
 
-@app.get("/start_task")
-def start_task():
-    task = add_five.delay()
+@app.get("/calculate_pi")
+def start_task(n: int = Query(..., gt=0, lt=1000)):
+    task = calculate_pi.delay(n)
     return {"task_id": task.id}
 
-@app.get("/check_task")
+@app.get("/check_task/{task_id}")
 def check_task(task_id: str):
     result = AsyncResult(task_id, app=celery_app)
 
