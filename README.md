@@ -1,6 +1,6 @@
 # pi-calculator
 
-this project demonstrates how to use **FastAPI** + **Celery** + **Redis** for background processing of long-running tasks (e.g calculating pi to `n` decimal places)
+this project demonstrates how to use **FastAPI** + **Celery** + **Redis** for background processing of long-running tasks (e.g calculating pi to n decimal places)
 
 ## API documentation
 
@@ -67,8 +67,6 @@ this project demonstrates how to use **FastAPI** + **Celery** + **Redis** for ba
        "result": null
      }
      ```
-
----
 
 ## how to run locally with Docker
 
