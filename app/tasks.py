@@ -19,6 +19,8 @@ def calculate_pi(self, digits: int):
         X *= -262537412640768000
         S += Decimal(M * L) / X
         K += 12
+        progress = i / digits
+        self.update_state(state="PROGRESS", meta={"progress": progress})
 
     pi = C / S
     return str(pi)[:digits + 2]
